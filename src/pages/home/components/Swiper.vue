@@ -1,9 +1,10 @@
 <template>
   <div class="wrapper">
     <!-- <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback"> -->
-    <swiper :options="swiperOption">
+    <!-- v-if 是为了防止开始的空数组导致第一个元素最后一个显示 -->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" />
       </swiper-slide>
       <!-- Optional controls -->
@@ -18,24 +19,25 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props : {
+    list: Array
+  },
   data: function () {
     return {
       swiperOption: {
-        pagination :{
+        pagination  :{
           el:'.swiper-pagination',
         },
         autoplay:{
           stopOnLastSlide: true,
         },
         loop:true,
-      },
-      swiperList:[{
-        id: '001',
-        imgUrl:'http://img1.qunarzz.com/piao/fusion/1811/4d/6706bf772c05ce02.jpg_750x200_773e75f0.jpg'
-      },{
-        id: '002',
-        imgUrl:'http://img1.qunarzz.com/piao/fusion/1810/6e/4a5551bbb189d902.jpg_750x200_25257467.jpg'
-      }]
+      }
+    }
+  },
+  computed : {
+    showSwiper () {
+      return this.list.length
     }
   }
 }

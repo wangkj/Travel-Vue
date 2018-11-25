@@ -2,7 +2,7 @@
   <div>
     <div class="recommend-title">&nbsp;热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="itemx of recommendList" :key="itemx">        
+      <li class="item border-bottom" v-for="itemx of list" :key="itemx">        
         <img class="item-img" :src='itemx.imgUrl' />        
         <div class="item-info">
           <p class="item-title">{{itemx.title}}</p>
@@ -17,33 +17,8 @@
 <script>
 export default {
   name: 'HomeRecommand',
-  data () {
-    return {
-      recommendList: [{
-        id: '001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg',
-        title: '八达岭长城01',
-        desc: '不到长城非好汉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg',
-        title: '八达岭长城02',
-        desc: '不到长城非好汉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg',
-        title: '八达岭长城03',
-        desc: '不到长城非好汉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      },
-      {
-        id: '004',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1708/2b/2b3b94de99c0a425a3.img.jpg_200x200_2458ffb2.jpg',
-        title: '八达岭长城04',
-        desc: '不到长城非好汉xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      }]
-    }   
+  props: {
+    list: Array  
   }
 }
 </script>
